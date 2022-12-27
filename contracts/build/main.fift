@@ -1,0 +1,39 @@
+// automatically generated from `main.fc` incl:`stdlib.fc` 
+PROGRAM{
+  DECLPROC recv_internal
+  128253 DECLMETHOD get_total
+  recv_internal PROC:<{
+    32 PLDU
+    c4 PUSH
+    CTOS
+    0 PUSHINT
+    OVER
+    SEMPTY
+    0 EQINT
+    IF:<{
+      DROP
+      64 PLDU
+    }>ELSE<{
+      NIP
+    }>
+    ADD
+    NEWC
+    64 STU
+    ENDC
+    c4 POP
+  }>
+  get_total PROC:<{
+    c4 PUSH
+    CTOS
+    0 PUSHINT
+    OVER
+    SEMPTY
+    0 EQINT
+    IF:<{
+      DROP
+      64 PLDU
+    }>ELSE<{
+      NIP
+    }>
+  }>
+}END>c

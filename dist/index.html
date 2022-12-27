@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Counter</title>
+    <!-- Template Main CSS File -->
+    <link href="./chota.min.css" rel="stylesheet">
+    <link href="./index.css" rel="stylesheet">
+    <link href="./assets/icon-128.png" type="image/png" rel="icon" sizes="32x32">
+  </head>
+  <body>
+    <script type="text/javascript" src="./index.js"></script>
+    <div class="row menu">
+      <div class="col is-right">
+        <span id="wallet_address"></span>
+        <a class="button primary" id="connect_wallet">Connect wallet</a>
+      </div>
+    </div>
+    <div class="container main-content">
+      <div class="row">
+        <div class="col-4"> &nbsp; </div>
+        <div class="col-4">
+          <div class="row">
+            <div class="col is-center">
+              <div class="counter-wrapper">
+                <img src="./assets/counter.jpg" alt="TON dApp" title="TON counter dApp"/>
+                <div id="get_total"></div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col is-center">
+              <a class="button primary" id="increment">Increment counter</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-4"> &nbsp; </div>
+      </div>
+    </div>
+
+    <div class="modal-background" id="modal">
+      <div class="modal-close" id="modal-close">x</div>
+      <div class="modal" id="modal-content"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-2 is-center">2021-<span id="currentYear"></span></div>
+      <div class="col-8 is-center">
+        Made by
+        &nbsp;<a
+          target="_blank"
+          class="footer-made"
+          href="https://xtonwallet.com?utm_source=counter-dapp">XTON wallet team</a>&nbsp;
+        with
+        &#10084;&#65039;
+        <a
+          target="_blank"
+          class="footer-made"
+          href="https://github.com/xtonwallet/ton-dapp-boilerplate">Open source on Github</a>&nbsp;
+      </div>
+      <div class="col-2 is-center"><a href="https://docs.xtonwallet.com/support">Support</a></div>
+    </div>
+  </body>
+</html>
