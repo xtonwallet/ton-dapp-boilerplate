@@ -46,6 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       } catch(e) {
         show_modal(e.message);
+        update_get_total(currentEndpoint);
       }
     } else {
       show_modal("We need some action from your side to provide our service. Please confirm required permissions.");
@@ -108,7 +109,7 @@ const subscribeOnTxConfirmation = async (wallet_address) => {
   return new Promise((resolve, reject) => {
     //prevent deadlock
     const timeoutDeadlock = setTimeout(() => {
-      reject("Timeout for the confirmation, please check in the blockchain explorer");
+      reject(new Error("Timeout for the confirmation, please check in the blockchain explorer"));
     }, 60*1000); // in 20 seconds if no message, then reject
 
     window.ton
@@ -200,6 +201,7 @@ const update_get_total = (currentEndpoint) => {
 };
 
 const getUserInformation = async (silent = false) => {
+  window.ton.off("accountChanged");
   window.ton.on("accountChanged", function(data) {
     if (currentAccount != data) {
       currentAccount = data;
@@ -207,11 +209,12 @@ const getUserInformation = async (silent = false) => {
     }
   });
 
+  window.ton.off("endpointChanged");
   window.ton.on("endpointChanged", function(data) {
+    console.log(currentEndpoint, data, currentEndpoint != data);
     if (currentEndpoint != data) {
       currentEndpoint = data;
-      updateConnectedWalletInfo(currentAccount, data);
-      update_get_total(currentEndpoint);
+      getUserInformation();
     }
   });
 
@@ -231,6 +234,7 @@ const getUserInformation = async (silent = false) => {
       update_get_total(currentEndpoint);
     } catch(e) {
       console.log(e.message);
+      update_get_total("mainnet");
     }
   } else {
     const result = await checkPermission(['ton_account', "ton_endpoint"]);
