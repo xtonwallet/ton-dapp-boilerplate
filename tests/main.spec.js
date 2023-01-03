@@ -35,10 +35,12 @@ describe('SmartContract', () => {
     contract.setBalance(new BN(500));
 
     let msgBody = beginCell()
-    //increment
+      //increment
       .storeUint(1, 32)
       .endCell();
-        
+    
+    console.log(msgBody.toBoc().toString('base64'));
+
     const counter = [1,2,3,4,5];
     for (let i in counter)  {
       const res = await contract.sendInternalMessage(new InternalMessage({

@@ -16,7 +16,7 @@ dApp consists of 2 main parts:
 # Smart contracts
 
 To test smart contracts before the deploying you can use [tests/main.spec.js](./tests/main.spec.js) file. 
-To test the `main` smart contrat code need to run in the console:
+To test the `main` smart contract code need to run in the console:
 
 ```console
 yarn run test
@@ -60,9 +60,17 @@ This dApp demonstrates the following approaches:
 * Send a transaction to the TON blockchain.
 * Wait for the transaction to be confirmed on the TON blockchain.
 
+To run the local webserver:
+
+```console
+yarn start 
+```
+
+Open http://localhost:10007 to start developing own dApp.
+
 # Supported web wallets
 
-To test your wallet on compability with TEPs105 you can run in browser console this command:
+To test your wallet on compatibility with TEPs105 you can run in browser console this command:
 
 ```js
 typeof(window.ton) != "undefined" && window.ton.isTEPs105

@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const connectWallet = document.getElementById("connect_wallet");
   connectWallet.onclick = async () => {
     if (!walletIsTEPs105()) {
-      show_modal("Please use wallet with TEPs105 compatibilty, for example <a target='_blank' href='https://chrome.google.com/webstore/detail/xton-wallet/cjookpbkjnpkmknedggeecikaponcalb'>XTON wallet</a>.");
+      show_modal("Please use wallet with TEPs105 compatibility, for example <a target='_blank' href='https://docs.xtonwallet.com/installation'>XTON wallet</a>.");
       return;
     }
     getUserInformation();
@@ -268,10 +268,10 @@ const updateConnectedWalletInfo = (ton_account, endpoint) => {
   const wallet_address = document.getElementById("wallet_address");
   switch (endpoint) {
   case "mainnet":
-    wallet_address.innerHTML = `<a target="_blank" rel="noopener noreferrer" href="https://tonscan.org/address/${ton_account.address}">${shortAddress(ton_account.address)}</a> your balance is ~${Number(ton_account.balance/10**9).toFixed(2)}`;
+    wallet_address.innerHTML = `<a target="_blank" rel="noopener noreferrer" href="https://tonscan.org/address/${ton_account.address}">${shortAddress(ton_account.address)}</a> your balance is ~${ton_account.balance ? Number(ton_account.balance/10**9).toFixed(2): 0}`;
     break;
   case "testnet":
-    wallet_address.innerHTML = `<a target="_blank" rel="noopener noreferrer" href="https://testnet.tonscan.org/address/${ton_account.address}">${shortAddress(ton_account.address)}</a> your balance is ~${Number(ton_account.balance/10**9).toFixed(2)}`;
+    wallet_address.innerHTML = `<a target="_blank" rel="noopener noreferrer" href="https://testnet.tonscan.org/address/${ton_account.address}">${shortAddress(ton_account.address)}</a> your balance is ~${ton_account.balance ? Number(ton_account.balance/10**9).toFixed(2): 0}`;
     break;
   default:
     show_modal("We don't support this endpoint");
